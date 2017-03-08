@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="driverProvider" class="org.jbehave.web.selenium.PropertyWebDriverProvider" >
+    </bean>
+
+    <bean id="webDriverProvider" class="org.jbehave.web.selenium.PerStoryWebDriverSteps">
+        <constructor-arg ref="driverProvider"/>
+    </bean>
+
+    <bean id="pageFactory" class="com.genesis.jbehave.pages.pageFactory">
+        <constructor-arg ref="driverProvider"/>
+    </bean>
+
+    <bean id="personalSteps" class="com.genesis.jbehave.steps.personalSteps">
+        <constructor-arg ref="pageFactory"/>
+    </bean>
+
+    <bean id="telecomSteps" class="com.genesis.jbehave.steps.telecomSteps">
+        <constructor-arg ref="pageFactory"/>
+    </bean>
+
+    <bean id="arnetSteps" class="com.genesis.jbehave.steps.arnetSteps">
+        <constructor-arg ref="pageFactory"/>
+    </bean>
+
+    <bean id="clubPersonalSteps" class="com.genesis.jbehave.steps.clubPersonalSteps">
+        <constructor-arg ref="pageFactory"/>
+    </bean>
+
+</beans>
